@@ -3,6 +3,7 @@ Abrahams Thomas
 February 7, 2017
 CS 240
 TTh 2-3:50 PM
+Assembly_Area_Perm
 */
 #include<iostream>
 #include<cstdio>
@@ -10,35 +11,28 @@ TTh 2-3:50 PM
 using namespace std;
 
 int main() {
-	cout << "        /|\        " << endl;
-	cout << "       / | \       " << endl;
-	cout << "    a /  |  \ b    " << endl;
-	cout << "     /  h|   \     " << endl;
-	cout << "    /    |    \    " << endl;
-	cout << "   /     |     \   " << endl;
-	cout << "   -------------   " << endl;
+	cout << "        /|\\        " << "\t---------------" << endl;
+	cout << "       / | \\       " << "\t|             |" << endl;
+	cout << "    a /  |  \\ b    " << "\t|             | width" << endl;
+	cout << "     /  h|   \\     " << "\t|             |" << endl;
+	cout << "    /    |    \\    " << "\t|             |" << endl;
+	cout << "   /     |     \\   " << "\t---------------" << endl;
+	cout << "   -------------   " << "\t     length    " << endl;
 	cout << "         c         " << endl;
 
-	cout << "------------" << endl;
-	cout << "|          |" << endl;
-	cout << "|          | width" << endl;
-	cout << "|          |" << endl;
-	cout << "------------" << endl;
-	cout << "    length  " << endl;
+	int a = 0;
+	int b = 0;
+	int c = 0;
+	int h = 0;
 
-	unsigned int a = 0;
-	unsigned int b = 0;
-	unsigned int c = 0;
-	unsigned int h = 0;
+	int permTri = 0;
+	int areaTri = 0;
 
-	unsigned int permTri = 0;
-	unsigned int areaTri = 0;
+	int permRec = 0;
+	int areaRec = 0;
 
-	unsigned int permRec = 0;
-	unsigned int areaRec = 0;
-
-	unsigned int theWidth = 0;
-	unsigned int theLength = 0;
+	int theWidth = 0;
+	int theLength = 0;
 	
 	cout << "Enter the values of a,b,c and h for the rectangle: ";
 	cin >> a >> b >> c >> h;
@@ -56,7 +50,7 @@ int main() {
 		
 		mov ebx, 2; // ebx = 2;
 		imul eax, c; //eax = eax*c
-		sub edx, edx; //zero edx
+		cdq;
 		idiv ebx; // eax = eax/2
 		mov areaTri, eax; //areaTri = eax
 		//Perm Square
@@ -72,12 +66,12 @@ int main() {
 		mov areaRec, eax; //areaRec = eax;
 		
 	}
-	cout << "Triangle" << endl;
-	cout << "\tArea.........................." << areaTri << endl;
-	cout << "\tPerimeter....................." << permTri << endl;
-	cout << "Rectangle" << endl;
-	cout << "\tArea.........................." << areaRec << endl;
-	cout << "\tPerimeter....................." << permRec << endl;
+	cout << "\tTriangle" << endl;
+	cout << "\t\tArea.........................." << areaTri << endl;
+	cout << "\t\tPerimeter....................." << permTri << endl;
+	cout << "\tRectangle" << endl;
+	cout << "\t\tArea.........................." << areaRec << endl;
+	cout << "\t\tPerimeter....................." << permRec << endl;
 
 	system("Pause");
 	return 0;
