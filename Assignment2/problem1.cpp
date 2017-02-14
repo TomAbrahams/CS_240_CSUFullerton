@@ -10,7 +10,7 @@ short sandwichSize = 10;
 short total = 0;
 
 void menu() {
-
+	char myDrinkType;
 	cout << "---------------7-11 Convenient Store ---------------" << endl;
 	cout << "Drinks" << endl;
 	cout << "\tSoda(S)..............................$2" << endl;
@@ -21,16 +21,20 @@ void menu() {
 	//This is how many drinks...
 	cout << "How many drinks? ";
 	cin >> drinkNum;
+
+
 	//This is what type of drink
 	cout << "\tWhat kind of drink (S=Soda, W=Water)? ";
-	cin >> drinkType;
+	cin >> myDrinkType;
 	//This is how many sandwiches;
+	
 	cout << "How many sandwiches?";
 	cin >> sandwichNum;
 	cout << endl << "\tWhat size of sandwich (10/12 inches)? ";
 	cin >> sandwichSize;
-	drinkType = (short)toupper(drinkType);
-	
+	myDrinkType = toupper(myDrinkType);
+	//cout << "Get ready" << endl;
+	drinkType = (short)myDrinkType;
 }
 void thankYou()
 {
@@ -53,9 +57,9 @@ int main() {
 		cmp cx, 'S'; //Check if soda
 		jmp true2;
 	true1:
-		//Drinks multiplied by 1
-		jmp testSandwich;
+		//Drinks multiplied by 1		
 		mov total, ax; //total = 1*drinks
+		jmp testSandwich;
 	true2:
 		mov bx, 2; //bx = 2
 		cwd; //Ready multiplication.
@@ -66,7 +70,7 @@ int main() {
 		//Get sandwich type.
 		mov cx, sandwichSize; //Get the size
 		//See if it is 10 inches
-		cmp cx, sandwichSize;
+		cmp cx, 10;
 		je sandTen;
 	sandTwelve:
 		mov ax, sandwichNum; //Num of Sandwiches
@@ -75,7 +79,7 @@ int main() {
 		add total, ax; //Gets total.
 		jmp finish;
 	sandTen:
-		mov ax, sandwichSize; //Num of Sandwiches
+		mov ax, sandwichNum; //Num of Sandwiches
 		cwd; //prepare 12 inches * 5
 		imul ax, 3; //sand*3
 		add total, ax; //Gets total.
