@@ -42,6 +42,11 @@ void kidwarn()
 	cout << "You are a kid. No membership for you" << endl;
 
 }
+void theEnd()
+{
+	cout << "Thank you for your time." << endl;
+	system("Pause");
+}
 
 int main()
 {
@@ -56,7 +61,9 @@ int main()
 		mov ax, age; //ax = age
 		cmp ax, 20; //
 		jge femaleTwenty;
-		jmp female13to19;
+		cmp ax, 13;
+		jge female13to19;
+		
 	femaleTwenty:
 		//20 years old female.
 		mov total, 80;
@@ -75,6 +82,7 @@ int main()
 	kid:
 		call kidWarn;
 		jmp finish;
+
 	finish:
 
 
