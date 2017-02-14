@@ -37,7 +37,7 @@ void thankyou()
 	cout << "Your membership is $" << total << endl;
 
 }
-void kidwarn()
+void kidWarn()
 {
 	cout << "You are a kid. No membership for you" << endl;
 
@@ -50,44 +50,56 @@ void theEnd()
 
 int main()
 {
+	cout << male;
+	cout << "Hello noggers" << endl;
+	
 	__asm {
 		//gender, age,
 		//Determine gender
 		call menu; //Menu gets variables.
 		mov ax, gender; //ax = gender
 		cmp ax, male;
-		je male:
-	female:
+		je male1;
+	female1:
 		mov ax, age; //ax = age
 		cmp ax, 20; //
 		jge femaleTwenty;
 		cmp ax, 13;
 		jge female13to19;
-		
+		jmp kid;
 	femaleTwenty:
 		//20 years old female.
 		mov total, 80;
-		jmp endgame;
+		jmp finish;
 	female13to19:
 		mov ax, age;
-		cmp ax, age;
-		jl kid;
 		mov total, 85;
-		jmp endgame;
-	male:
-		mov ax, age; //ax = age 
-		cmp ax, 20;
+		jmp finish;
+	male1:
+		mov ax, age; //ax = age
+		cmp ax, 20; //
 		jge maleTwenty;
-		jmp maleLessTwenty;
+		cmp ax, 13;
+		jge male13to19;
+		jmp kid;
+	maleTwenty:
+		//20 years old female.
+		mov total, 100;
+		jmp finish;
+	male13to19:
+		mov ax, age;
+		mov total, 75;
+		jmp finish;		
 	kid:
 		call kidWarn;
-		jmp finish;
+		jmp endgame;
 
 	finish:
-
-
+		call thankyou;
 
 	endgame:
-
+		call theEnd;
 	}
+	
+	return 0;
 }
