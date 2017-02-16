@@ -1,7 +1,7 @@
 //Project No. 3 - Division, multiplication and making decisions
 /*
-Abrahams, Thomas
-Partner: Max Krochman
+Max Krochman
+Partner: Abrahams, Thomas
 CS 240
 Project 3 Division, Multiplication, and Making Decisions
 Part 4: Cramer's rule
