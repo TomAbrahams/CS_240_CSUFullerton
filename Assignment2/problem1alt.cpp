@@ -4,7 +4,7 @@ Abrahams, Thomas
 Partner: Max Krochman
 CS 240
 Project 3 Division, Multiplication, and Making Decisions
-Part 2: Computing Averages
+Part 1: 7-11 Store
 */
 
 #include<iostream>
