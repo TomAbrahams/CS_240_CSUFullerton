@@ -57,9 +57,6 @@ void theEnd()
 
 int main()
 {
-	cout << male;
-	cout << "Hello noggers" << endl;
-
 	__asm {
 		//gender, age,
 		//Determine gender
