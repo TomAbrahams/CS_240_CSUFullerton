@@ -1,9 +1,9 @@
 /*
-	Abrahams, Thomas
-	Partner: Max Krochman
-	CS 240 
-	Project 3 Division, Multiplication, and Making Decisions
-	Part 3: The Club
+Abrahams, Thomas
+Partner: Max Krochman
+CS 240
+Project 3 Division, Multiplication, and Making Decisions
+Part 3: The Club
 */
 #include<iostream>
 #include<cstdio>
@@ -14,28 +14,28 @@ short teenMalePrice = 75;
 short adultFemPrice = 80;
 short teenFemPrice = 85;
 short age = 0;
-short gender = (short)'M';
-short total= 0;
-short male = (short)'M';
-short female = (short)'F';
+char gender = 'M';
+short total = 0;
+char male = 'M';
+char female = 'F';
 
 void menu()
 {
-	cout << "---------------ACE CLUB---------------" << endl;
+	cout << "--------------------ACE CLUB--------------------" << endl;
 	cout << "Male" << endl;
-	cout << "\tAdult(age>19)......................." << endl;
-	cout << "\tTeenager(age 13-19)................." << endl;
+	cout << "\tAdult( age > 19 ).......................$100" << endl;
+	cout << "\tTeenager( age 13-19 )....................$75" << endl;
 	cout << "Female" << endl;
-	cout << "\tAdult(age>19)......................." << endl;
-	cout << "\tTeenager(age 13-19)................." << endl;
+	cout << "\tAdult( age > 19 ).......................$80" << endl;
+	cout << "\tTeenager( age 13-19 )...................$85" << endl;
 	cout << "How old are you? ";
 	cin >> age;
-	cout << "What is your gender (M/F)? " << endl;
+	cout << "What is your gender (M/F)? ";
 	char myGender;
 	cin >> myGender;
 	//Convert
-	myGender = toupper(myGender);
-	gender = (short)myGender;
+	gender = myGender;
+	
 
 
 }
@@ -59,14 +59,26 @@ int main()
 {
 	cout << male;
 	cout << "Hello noggers" << endl;
-	
+
 	__asm {
 		//gender, age,
 		//Determine gender
+	menu:
 		call menu; //Menu gets variables.
-		mov ax, gender; //ax = gender
-		cmp ax, male;
+		mov al, gender; //al = gender
+		cmp al, male;
 		je male1;
+		cmp al, 'm';
+		je male1;
+		//Check for female.
+		mov al, female;
+		cmp al, female;
+		je female1;
+		//Check for female lowercase
+		mov al, female;
+		cmp al, 'f';
+		je female1;
+		jmp menu;
 	female1:
 		mov ax, age; //ax = age
 		cmp ax, 20; //
@@ -96,7 +108,7 @@ int main()
 	male13to19:
 		mov ax, age;
 		mov total, 75;
-		jmp finish;		
+		jmp finish;
 	kid:
 		call kidWarn;
 		jmp endgame;
@@ -107,6 +119,6 @@ int main()
 	endgame:
 		call theEnd;
 	}
-	
+
 	return 0;
 }
