@@ -1,3 +1,10 @@
+/*
+	Abrahams, Thomas
+	Partner: Max Krochman
+	CS 240 
+	Project 3 Division, Multiplication, and Making Decisions
+	Part 3: The Club
+*/
 #include<iostream>
 #include<cstdio>
 
