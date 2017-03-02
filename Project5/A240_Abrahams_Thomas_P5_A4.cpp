@@ -1,3 +1,11 @@
+/*
+	Abrahams, Thomas
+	Partner: Max Krochman
+	March 2, 2017
+	Project 5
+
+*/
+
 #include<iostream>
 #include<cstdlib>
 #include <ctime>
@@ -9,7 +17,7 @@ int secondValue;
 int currentNum;
 
 int randomNum;
-
+char charRandomNum;
 int binaryArr[16];
 int floorArr[16];
 int comparison;
@@ -22,11 +30,15 @@ int invCounter;
 //Need an array that holds the values.
 //Need a way to print out the zeros.
 //Need a way to get the floors.
-void random()
+void shuffle()
 {
 	srand(time(NULL));
-	randomNum = (rand() % 32766);
-
+}
+void random()
+{
+	
+	randomNum = (rand() % 15);
+	charRandomNum = (char)randomNum;
 }
 void storeInArray()
 {
@@ -81,18 +93,23 @@ int main()
 		mov theValue, 0;
 		mov ecx, 1;
 		shl ecx, 15;
+		call shuffle;
 	genRandom:
 		
 		//10 random numbers.
+		//Creates a random number
 		call random;		//Gets random number.
 		mov eax, randomNum;		//Store ax = random
-		add eax, 2;			//Add 2 to do bit shift for or. 
+		//If eax = 0 then floor 2 was picked
+		mov ecx, 10;
+		mov cl, charRandomNum;
+		shl ecx, cl;
+		mov eax, ecx;
 		mov ebx, theValue;
 
-		mov eax, randomNum;		//Store ax = random
-		mov ebx, 1111111111111110b;
-		and eax, ebx;
-		mov randomNum, eax;
+		//mov eax, randomNum;		//Store ax = random
+		//and eax, ebx;
+		//mov randomNum, eax;
 
 		mov ebx, theValue;
 		or ebx, eax;	//Makes value or statement.
@@ -114,15 +131,10 @@ int main()
 		mov ecx, comparison;
 		mov eax, theValue;			//Number is in.
 		and eax, ecx;				//Gets bx as 1 or 0
-									//Make the cases for counter.
-									//Printer 14 bit
 		mov currentNum, eax;		//Gets the bit number.
 		call storeInArray;
 		inc counter;
 		mov edx, counter;
-
-
-
 		mov eax, theValue;
 		shl eax, 1;
 		mov theValue, eax;
@@ -175,8 +187,6 @@ int main()
 		mov ecx, comparison;
 		mov eax, secondValue;			//Number is in.
 		and eax, ecx;				//Gets bx as 1 or 0
-									//Make the cases for counter.
-									//Printer 14 bit
 		mov currentNum, eax;		//Gets the bit number.
 		inc counter;
 		mov edx, counter;
