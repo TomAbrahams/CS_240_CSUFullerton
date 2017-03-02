@@ -26,7 +26,7 @@ void random()
 {
 	srand(time(NULL));
 	randomNum = (rand() % 32766);
-	
+
 }
 void storeInArray()
 {
@@ -80,20 +80,28 @@ int main()
 		//mov theValue, 0x910C;
 		mov theValue, 0;
 		mov ecx, 1;
-		shl ecx, 15;		
+		shl ecx, 15;
 	genRandom:
+		
 		//10 random numbers.
 		call random;		//Gets random number.
 		mov eax, randomNum;		//Store ax = random
 		add eax, 2;			//Add 2 to do bit shift for or. 
-		mov ebx, theValue 
+		mov ebx, theValue;
+
+		mov eax, randomNum;		//Store ax = random
+		mov ebx, 1111111111111110b;
+		and eax, ebx;
+		mov randomNum, eax;
+
+		mov ebx, theValue;
 		or ebx, eax;	//Makes value or statement.
 		mov theValue, ebx;	//The value holds the final value from the randoms.
 		inc counter;
 		cmp counter, 10;
 		je empezar;
 		jmp genRandom;
-		
+
 	empezar:
 		mov ecx, theValue;
 		mov secondValue, ecx;
@@ -106,12 +114,14 @@ int main()
 		mov ecx, comparison;
 		mov eax, theValue;			//Number is in.
 		and eax, ecx;				//Gets bx as 1 or 0
-								//Make the cases for counter.
-								//Printer 14 bit
+									//Make the cases for counter.
+									//Printer 14 bit
 		mov currentNum, eax;		//Gets the bit number.
 		call storeInArray;
 		inc counter;
 		mov edx, counter;
+
+
 
 		mov eax, theValue;
 		shl eax, 1;
