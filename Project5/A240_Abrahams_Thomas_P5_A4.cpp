@@ -22,6 +22,7 @@ int binaryArr[16];
 int floorArr[16];
 int comparison;
 
+int placeHolder;
 int counter;
 int theFloor;
 int invCounter;
@@ -94,6 +95,7 @@ int main()
 		mov ecx, 1;
 		shl ecx, 15;
 		call shuffle;
+		mov placeHolder, 2;
 	genRandom:
 		
 		//10 random numbers.
@@ -101,10 +103,10 @@ int main()
 		call random;		//Gets random number.
 		mov eax, randomNum;		//Store ax = random
 		//If eax = 0 then floor 2 was picked
-		mov ecx, 10;
+		mov edx, 2;
 		mov cl, charRandomNum;
-		shl ecx, cl;
-		mov eax, ecx;
+		shl edx, cl;
+		mov eax, edx;
 		mov ebx, theValue;
 
 		//mov eax, randomNum;		//Store ax = random
